@@ -9,12 +9,12 @@ Webcam.attach("#camera");
 
 function take_snapshot() {
     Webcam.snap(function(data_uri){
-        document.getElementById("result").innerHTML = '<img id="image_captured" src="'+data_uri+'"/>';
+        document.getElementById("result").innerHTML = '<img id="image_captured" src="'+data_uri+'"/>';            
     });
 };
 
 console.log("ml5 Version: ",ml5.version);
-classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/tuzlHuJ0V/.json',modelLoaded);
+classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/tuzlHuJ0V/model.json',modelLoaded);
 
 function modelLoaded() {
     console.log("Model Loaded Successfully!");
@@ -22,10 +22,10 @@ function modelLoaded() {
 
 function check() {
     img = document.getElementById("image_captured");
-    classifier.classify(img, gotResults);
+    classifier.classify(img, gotResult);
 }
 
-function gotResults(error, results) {
+function gotResult(error, results) {
     if(error) {
         console.error(error);
     }
